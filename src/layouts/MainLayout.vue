@@ -45,6 +45,12 @@ export default defineComponent({
 
   components: {},
 
+  preFetch ({ store }) {
+    console.log('preFetch')
+    console.log('refreshing data')
+    return store.dispatch('products/refreshProducts')
+  },
+
   setup () {
     const leftDrawerOpen = ref(false)
     const search = ref('')
