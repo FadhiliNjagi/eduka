@@ -3,18 +3,20 @@
     <q-img :src="product.image" class="item__img" fit="contain" />
     <q-card-section class="q-pa-none">
       <q-btn class="q-py-sm q-mx-xs card-content full-width" flat stretch>
-        <div class="text-subtitle2 description full-width text-left q-mb-none" :title="product.title">{{ product.title }}</div>
-        <div class="row justify-start items-center items-stretch full-width q-mb-sm">
-          <div class="row align-left self-center">
+        <div class="text-subtitle2 description full-width text-left q-mb-none" :title="product.title">
+          {{ product.title }}
+        </div>
+        <div class="row flex-start flex-center items-stretch q-mb-sm full-width">
+          <div class="row self-center">
             <q-icon name="star" :color="product.rating.rate > 0 ? 'orange': 'grey-5'" size="16px"/>
             <q-icon name="star" :color="product.rating.rate > 1 ? 'orange': 'grey-5'" size="16px" />
             <q-icon name="star" :color="product.rating.rate > 2 ? 'orange': 'grey-5'" size="16px" />
             <q-icon name="star" :color="product.rating.rate > 3 ? 'orange': 'grey-5'" size="16px" />
             <q-icon name="star" :color="product.rating.rate > 4 ? 'orange': 'grey-5'" size="16px" />
           </div>
-          <small class="text-blue-9 q-ml-xs col-grow text-left self-start">({{  product.rating.count }})</small>
-          <span class="q-ml-xs q-mr-xs text-red self-end">${{ product.price }}</span>
-          <q-icon name="expand_more" />
+          <small class="text-blue-9 q-ml-xs col-grow text-left self-center">({{ product.rating.count }})</small>
+          <span class="q-ml-xs q-mr-xs text-red text-body2 self-center">${{ product.price }}</span>
+          <q-icon name="more_vert" class="gt-xs self-center" size="xs" />
         </div>
         <q-menu max-width="235px" max-height="50vh">
           <div class="q-pa-md">
@@ -22,7 +24,7 @@
               <q-chip color="primary" text-color="white" size="13px" square class="q-mx-none self-start">
                 {{ product.category }}
               </q-chip>
-               <q-btn flat round icon="add_shopping_cart" size="md" class="self-center q-ml-auto" color="primary" text-color="black" @click="addToCart(product.id)" />
+               <q-btn round icon="add_shopping_cart" size="12px" class="self-center q-ml-auto" color="indigo-2" text-color="black" @click="addToCart(product.id)" />
             </div>
             <div>{{ product.description }}</div>
           </div>
@@ -58,6 +60,11 @@ export default defineComponent({
   height: fit-content;
   width: 235px;
 }
+@media screen and (max-width: 600px) {
+  .item {
+    width: 210px;
+  }
+}
 .description {
   width: 158px;
   overflow: hidden;
@@ -71,10 +78,10 @@ export default defineComponent({
 .card-content {
   height: 85px;
 }
-.item__more {
-  width: 158px;
-}
 .item__img {
   height: 120px;
+}
+.left {
+  margin-left: auto;
 }
 </style>

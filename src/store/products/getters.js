@@ -1,4 +1,4 @@
-export function getProductByCategoryId (state) {
-  return state.products.filter((value) => value.category === state.categories[0].category
+export function getProductByCategoryId (state, value) {
+  return state.products.filter(() => value.category === state.categories[0].category
   )
 }

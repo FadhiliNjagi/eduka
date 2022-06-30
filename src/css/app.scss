@@ -1,1 +1,10 @@
 // app global css in SCSS form
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sad-face {
+  height: 240px;
+}

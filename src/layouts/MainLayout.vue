@@ -30,7 +30,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-page-container>
+    <q-page-container class="page">
       <router-view />
     </q-page-container>
   </q-layout>
@@ -38,6 +38,7 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
+import { useQuasar } from 'quasar'
 
 export default defineComponent({
   name: 'MainLayout',
@@ -47,6 +48,13 @@ export default defineComponent({
   setup () {
     const leftDrawerOpen = ref(false)
     const search = ref('')
+    const $q = useQuasar()
+
+    $q.loadingBar.setDefaults({
+      color: 'blue-5',
+      size: '4px',
+      position: 'top'
+    })
 
     return {
       search,
@@ -68,5 +76,13 @@ export default defineComponent({
 }
 .nav-bar__icon {
   width: fit-content;
+}
+.page {
+  padding: 0 8%;
+}
+@media screen and (max-width: 600px) {
+  .page {
+    padding: 0px;
+  }
 }
 </style>

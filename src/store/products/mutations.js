@@ -1,10 +1,30 @@
 import { Notify } from 'quasar'
 
 export function updateProducts (state) {
+  state.products_loading = true
   fetch('https://fakestoreapi.com/products')
-    .then(res => res.json())
-    .then(data => { state.products = data })
-    .catch()
+    .then(response => {
+      if (response.ok) {
+        response.json().then(data => {
+          state.products = data
+        })
+      } else {
+        Notify.create({
+          message: 'Error updating products',
+          type: 'negative'
+        })
+        console.log('No')
+      }
+    })
+    .catch(() => {
+      Notify.create({
+        message: 'Could not connect to the server',
+        type: 'negative'
+      })
+    })
+    .finally(() => {
+      state.products_loading = false
+    })
 }
 
 export function addToCart (state, productId) {

@@ -19,6 +19,7 @@ export default function () {
       }
     ],
     products: [],
-    cart: [1, 2]
+    cart: [],
+    products_loading: false
   }
 }
